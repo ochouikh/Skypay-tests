@@ -11,6 +11,7 @@ public class Service {
     }
     
     void bookRoom(int userId, int roomNumber, Date checkIn, Date checkOut) {
+        rooms.stream().filter(room -> room.roomNumber == roomNumber).findFirst().orElseThrow(() -> new IllegalArgumentException("Room not found"));
         bookings.add(new Booking(userId, roomNumber, checkIn, checkOut));
     }
 
